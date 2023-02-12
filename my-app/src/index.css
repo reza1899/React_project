@@ -1,16 +1,25 @@
 body {
-  /*background-color:#1A2238 !important;*/
-  /*با این رنگ ها استفاده بشه*/
-  /*#9DAAF2 رز مانند*/
-  /*FF6A3D نارنجی*/
-  /*F4DB7D زرد*/
-  margin: 0;
+  background-color:#1A2238 !important;
   font-family: "Vazir" , "tahoma" ,"Ubuntu" !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+input [type ="text"] ::-webkit-input-placeholder,
+input [type ="email"] ::-webkit-input-placeholder,
+input [type ="number"] ::-webkit-input-placeholder {
+ color: #F4DB7D !important;
 }
+input [type ="text"] ,
+input [type ="email"] ,
+input [type ="number"] {
+  background-color: #9DAAF2 !important;
+  border-color: #F4DB7D !important;
+  color: #F4DB7D !important;
+}
+.form-control {
+  background-color: #9DAAF2 !important;
+  color: #F4DB7D !important;
+  border-color: #F4DB7D !important;
+}
+
+
