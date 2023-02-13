@@ -1,4 +1,4 @@
-import {ROS,ZARD,NARANJI} from "../../helpers/Colors"
+import {ROS,NARANJI} from "../../helpers/Colors"
 const Contact = () => {
     return (
         <>
