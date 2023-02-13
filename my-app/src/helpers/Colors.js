@@ -5,5 +5,5 @@
 /*F4DB7D زرد*/
 export const BACKGROUND = "#1A2238"
 export const ROS = "#9DAAF2"
-export const NARANJI = "#FF6A3D"
+export const NARANJI = "#f99a5f"
 export const ZARD = "#F4DB7D"
