@@ -1,4 +1,4 @@
-import {ROS , NARANJI} from "../../helpers/Colors"
+import {NARANJI} from "../../helpers/Colors"
 import Contact from "./Contact"
 import Spinner from "../Spinner"
 const Contacts = ({contacts , loading}) => {
