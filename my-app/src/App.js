@@ -1,8 +1,8 @@
 import {useState} from "react"
 import './App.css'
+import {Outlet} from "react-router-dom"
 import {
     Navbar,
-    Contacts,
 } from "./components";
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
 return(
   <div className="App">
     <Navbar />
-      <Contacts contacts= {contacts} loading = {loading}/>
+      <Outlet/>
   </div>
 )
 }
