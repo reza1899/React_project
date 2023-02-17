@@ -1,14 +1,17 @@
 import {Datas} from "./Data";
-import {Outlet , Link} from "react-router-dom";
+import {Link} from "react-router-dom";
+
 const Books = () => {
-    return (
+    return(
         <>
-           <input type="search" placeholder="جستسوجو کنید"/>
-          <div className="p-3">
-              {Datas.map(data => (<Link className="d-block text-decoration-none" to={`/Book/${data.number}`} key={data.name} >{data.name}</Link>
-              ))}
-          </div>
-            <Outlet/>
+            <div className="d-block">
+                <input type="search" placeholder="جستوجو کنید"/>
+                {
+                    Datas.map(data => (
+                        <Link to={`/book/${data.number}`} className="d-block fs-4" key={data.number}>{data.name}</Link>
+                    ))
+                }
+            </div>
         </>
     )
 }

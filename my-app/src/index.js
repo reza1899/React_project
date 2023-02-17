@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {Books,Home,Book} from "./components/index"
 // bootstrap
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
 // end bootstrap
 import {BrowserRouter , Routes, Route} from "react-router-dom"
+import {About, Book, Books} from "./components";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -16,11 +16,10 @@ root.render(
     <BrowserRouter>
         <Routes>
             <Route path="/" element={<App />}>
-                <Route index element={<Home />} />
-                <Route path ="/books" element={<Books />} >
-                </Route>
-                <Route path = "/book/:bookId" element={<Book />}/>
+                <Route path = "/about" element={<About/>}/>
+                <Route path = "/books" element={<Books/>}/>
             </Route>
+            <Route path = "/book/:bookId" element={<Book/>}/>
         </Routes>
     </BrowserRouter>
   </React.StrictMode>

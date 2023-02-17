@@ -1,6 +1,6 @@
 import {useState} from "react"
 import './App.css'
-import {Outlet} from "react-router-dom"
+import {Link, Outlet} from "react-router-dom"
 import {
     Navbar,
 } from "./components";
@@ -11,6 +11,9 @@ function App() {
 return(
   <div className="App">
     <Navbar />
+      <Link to="/about">about</Link>
+      {" "}
+      <Link to="/books">books</Link>
       <Outlet/>
   </div>
 )
