@@ -10,7 +10,7 @@ const Book = () =>{
                     {book.name}
                 </h1>
                 <h1>
-                    {book.price}
+                    {book.price }
                 </h1>
                 <h1>
                     {book.due}
