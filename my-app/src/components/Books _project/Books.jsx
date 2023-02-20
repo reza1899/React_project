@@ -1,20 +1,32 @@
 import {Datas} from "./Data";
-import {Link,useSearchParams} from "react-router-dom";
-
+import {useSearchParams , Link,Outlet,useLocation} from "react-router-dom";
 const Books = () => {
     const [search,setSearch] = useSearchParams()
-
+    const location = useLocation()
     return(
         <>
             <div className="d-block">
-                <input onChange = {} value={search.get("title")} type="search" placeholder="جستوجو کنید"/>
-                {
-                    // یاد گرفتن جاوا اسکریپ
-                    Datas.filter().map(data => (
-                        <Link to={`/book/${data.number}`} className="d-block fs-4" key={data.number}>{data.name}</Link>
-                    ))
-                }
+                <input value={search.get("filter") || ""} onChange={e => {
+                    let filter = e.target.value
+                    if (filter) {setSearch({filter})}
+                    else setSearch({})
+                }} type="search" placeholder="جستوجو کنید"/>
+                <ul>
+                    {Datas.filter(data => {
+                        let filter = search.get("filter")
+                        if (!filter) return true ;
+                        let name = data.name.toLowerCase()
+                       return name.startsWith(filter.toLowerCase())
+                    })
+                        .map(data => (
+                           <div className="d-block">
+                              <Link to={`/book/${data.number}${location.search}`}>{data.name}</Link>
+                           </div>
+                        ))
+                    }
+                </ul>
             </div>
+            <Outlet/>
         </>
     )
 }

@@ -18,8 +18,8 @@ root.render(
             <Route path="/" element={<App />}>
                 <Route path = "/about" element={<About/>}/>
                 <Route path = "/books" element={<Books/>}/>
+                <Route path = "/book/:bookId" element={<Book/>}/>
             </Route>
-            <Route path = "/book/:bookId" element={<Book/>}/>
         </Routes>
     </BrowserRouter>
   </React.StrictMode>
