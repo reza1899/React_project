@@ -16,6 +16,18 @@ export const Datas =[
         price : '65,000',
         due : "1285",
         number: 3
+    },
+    {
+        name : "nabord",
+        price : '65,000',
+        due : "1285",
+        number: 4
+    },
+    {
+        name : "nazanin",
+        price : '65,000',
+        due : "1285",
+        number: 5
     }
 ]
 export const getbooks = (number) => {
