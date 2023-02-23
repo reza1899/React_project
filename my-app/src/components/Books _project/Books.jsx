@@ -1,10 +1,7 @@
 import {Datas} from "./Data";
 import {Link} from "react-router-dom";
-import {useState} from "react"
 
 const Books = () => {
-    const [search , setSearch] = useState()
-    console.log(search)
     return (
         <>
             <div className="d-block">

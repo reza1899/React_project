@@ -1,5 +1,6 @@
 import {useParams} from "react-router-dom";
-import {Datas} from "./Data";
+import {Datas,hazf} from "./Data";
+import data from "bootstrap/js/src/dom/data";
 const Book = () =>{
     const Id = useParams()
     const book = Datas.find(data => (data.number === parseInt(Id.bookId)))
@@ -15,6 +16,10 @@ const Book = () =>{
                 <h1>
                     {book.due}
                 </h1>
+                <button onClick={() => {
+                    hazf(data.number)
+                }
+                }></button>
             </div>
         </>
     )

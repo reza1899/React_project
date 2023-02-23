@@ -1,4 +1,5 @@
-export const Datas =[
+
+export let Datas =[
     {
         name : "nabarde man",
         price : '120,000',
@@ -30,6 +31,5 @@ export const Datas =[
         number: 5
     }
 ]
-export const getbooks = (number) => {
-    return Datas.find((data) => data.number === number)
-}
+export const hazf = z => {}
+Datas = Datas.filter((data) => data.number !== this.z)
