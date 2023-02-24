@@ -31,3 +31,8 @@ export let Datas =[
         number: 5
     }
 ]
+export const msr = (number) => {
+    Datas = Datas.filter(data => {
+        return data.number !== number
+    })
+}
