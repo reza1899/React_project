@@ -31,5 +31,3 @@ export let Datas =[
         number: 5
     }
 ]
-export const hazf = z => {}
-Datas = Datas.filter((data) => data.number !== this.z)
