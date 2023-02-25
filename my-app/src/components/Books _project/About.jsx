@@ -1,10 +1,10 @@
-const About = () => {
-    return (
-        <>
-            <div className="text-center">
-                در باره ی ما
-            </div>
-        </>
-    )
-}
-export default About
+// const About = () => {
+//     return (
+//         <>
+//             <div className="text-center">
+//                 در باره ی ما
+//             </div>
+//         </>
+//     )
+// }
+// export default About
