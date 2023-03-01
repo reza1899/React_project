@@ -18,7 +18,7 @@ return(
     <Navbar />
       <Routes>
           <Route path="/" element={<Navigate to="/contacts"/>}/>
-          <Route path = "/contacts" element={<Contacts contacts={contacts} loading={loading}/>}/>
+          <Route path = "/contacts" element={<Contacts contacts={contacts} loading={loading}/>}/> 
       </Routes>
   </div>
 )
