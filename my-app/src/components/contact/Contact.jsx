@@ -1,5 +1,5 @@
 import {ROS,NARANJI} from "../../helpers/Colors"
-const Contact = () => {
+const Contact = ({contact}) => {
     return (
         <>
             <div className="col-md-6">
@@ -7,14 +7,14 @@ const Contact = () => {
                     <div className="card-body">
                         <div className="row align-items-center d-flex justify-content-around">
                             <div className="col-md-4 col-sm-4">
-                                <img className='rounded-3 img-fluid' src="https://via.placeholder.com/200" alt="user" />
+                                <img className='rounded-3 img-fluid' src={contact.image} alt="user" />
                             </div>
                             <div className="col-md-7 col-sm-7">
                                 <div>
                                     <ul className="list-group">
-                                        <li style={{backgroundColor:NARANJI}} className="list-group-item">نام و نام خانوداگی:{" "}<span className="fw-bold">رضا پاکزاد</span></li>
-                                        <li style={{backgroundColor:NARANJI}} className="list-group-item">شماره موبایل: {" "} <span className="fw-bold">09137603370</span></li>
-                                        <li style={{backgroundColor:NARANJI}} className="list-group-item">آدرس ایمیل : {" "} <span className="fw-bold">reza.pk.lu9@gmail.com</span></li>
+                                        <li style={{backgroundColor:NARANJI}} className="list-group-item">نام و نام خانوداگی:{" "}<span className="fw-bold">{contact.name}</span></li>
+                                        <li style={{backgroundColor:NARANJI}} className="list-group-item">شماره موبایل: {" "} <span className="fw-bold">{contact.mobile}</span></li>
+                                        <li style={{backgroundColor:NARANJI}} className="list-group-item">آدرس ایمیل : {" "} <span className="fw-bold">{contact.email}</span></li>
                                     </ul>
                                 </div>
                             </div>
