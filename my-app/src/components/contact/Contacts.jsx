@@ -12,7 +12,11 @@ const Contacts = ({contacts , loading}) => {
                     <img className="w-25 rounded-3" src={require("../../assets/R.gif")} alt="a gif" />
                    </div>
                 ) : (
-                   contacts.map((c) => <Contact key={c.id} contact={c}/> )
+                   <div className="row m-0 bg-info">
+                           {contacts.map((c) => <div className="col-6 p-0 d-flex justify-content-around">
+                               <Contact key={c.id} contact={c}/>
+                           </div> )}
+                   </div>
                 )}
             </div>) }
         </>

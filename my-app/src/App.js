@@ -5,6 +5,7 @@ import {Routes,Route,Navigate} from "react-router-dom"
 import {
     Navbar,
     Contacts,
+    AddContact,
 } from "./components";
 
 function App() {
@@ -35,6 +36,7 @@ return(
       <Routes>
           <Route path="/" element={<Navigate to="/contacts"/>}/>
           <Route path = "/contacts" element={<Contacts contacts={contacts} loading={loading}/>}/>
+          <Route path ="/add" element={<AddContact loading ={loading}/>}/>
       </Routes>
   </div>
 )

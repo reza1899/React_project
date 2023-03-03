@@ -6,7 +6,7 @@ const Contact = ({contact}) => {
                 <div style={{backgroundColor:ROS}} className="container card my-2">
                     <div className="card-body">
                         <div className="row align-items-center d-flex justify-content-around">
-                            <div className="col-md-4 col-sm-4">
+                            <div className="col-md-4 col-sm-4 ">
                                 <img className='rounded-3 img-fluid' src={contact.image} alt="user" />
                             </div>
                             <div className="col-md-7 col-sm-7">
