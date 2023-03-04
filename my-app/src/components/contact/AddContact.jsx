@@ -1,7 +1,7 @@
 import Spinner from "../Spinner";
 import {useNavigate} from "react-router-dom";
 
-const AddContact = ({loading , userInfo}) => {
+const AddContact = ({loading , userInfo}) => { 
     const Navigate = useNavigate()
     return(
         <>
