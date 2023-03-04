@@ -11,6 +11,13 @@ import {
 function App() {
   const [contacts , setContacts] = useState([])
   const [loading , setLoading] = useState (false)
+    const [userInfo , setuserInfo] = useState({
+        fullName : "",
+        image : "",
+        phoneNUmber : "",
+        email : "",
+        }
+    )
    useEffect(()=> {
       const fetch = async () => {
           try {
@@ -36,7 +43,7 @@ return(
       <Routes>
           <Route path="/" element={<Navigate to="/contacts"/>}/>
           <Route path = "/contacts" element={<Contacts contacts={contacts} loading={loading}/>}/>
-          <Route path ="/add" element={<AddContact loading ={loading}/>}/>
+          <Route path ="/add" element={<AddContact loading ={loading} userInfo={userInfo}/>}/>
       </Routes>
   </div>
 )

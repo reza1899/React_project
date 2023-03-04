@@ -1,5 +1,8 @@
 import Spinner from "../Spinner";
-const AddContact = ({loading}) => {
+import {useNavigate} from "react-router-dom";
+
+const AddContact = ({loading , userInfo}) => {
+    const Navigate = useNavigate()
     return(
         <>
             {loading ? <Spinner/> :
@@ -24,7 +27,7 @@ const AddContact = ({loading}) => {
                         </datalist>
                         <div className="p-3">
                             <button style={{ color: "#f99a5f" }} className="btn btn-outline-secondary ms-2">ساخت مخاطب</button>
-                            <button style={{ color: "#F4DB7D" }} className="btn btn-outline-secondary">انصراف</button>
+                            <button style={{ color: "#F4DB7D" }} className="btn btn-outline-secondary" onClick={() => Navigate("/contacts")}>انصراف</button>
                         </div>
                     </div>
                     <div className="col-md-6 p-0 text-center">

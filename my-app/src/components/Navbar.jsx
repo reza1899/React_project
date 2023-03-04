@@ -1,6 +1,9 @@
 import SearchContact from "./contact/SearchContact";
 import {ROS , ZARD} from "../helpers/Colors"
+import {useNavigate} from "react-router-dom";
+
 const Navbar = () => {
+    const Navigate = useNavigate()
     return (
         <nav className="navbar navbar-expand-lg shadow-lg p-3">
             <div className="container mt-2">
@@ -8,6 +11,7 @@ const Navbar = () => {
                     <div className="col p-0 d-flex">
                         <i style={{color:ROS}} className="fas fa-address-book fs-4 ms-2"/>
                         <h6 style={{color: ZARD}} className="d-flex">وب اپلیکیشن مدیریت{" "} <div style={{color:ROS, marginRight:"4px", fontWeight:"bolder"}}>مخاطبین</div> </h6>
+                        <button className="btn btn-primary mx-5" onClick={()=> Navigate("/add")}>ساخت مخاطب جدید</button>
                     </div>
                     <div className="col p-0">
                         <SearchContact/>
