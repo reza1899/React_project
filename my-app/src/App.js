@@ -11,10 +11,10 @@ import {
 function App() {
   const [contacts , setContacts] = useState([])
   const [loading , setLoading] = useState (false)
-    const [userInfo , setuserInfo] = useState({
+    const [userInfo , setUserInfo] = useState({
         fullName : "",
         image : "",
-        phoneNUmber : "",
+        phoneNumber : "",
         email : "",
         }
     )
@@ -43,7 +43,7 @@ return(
       <Routes>
           <Route path="/" element={<Navigate to="/contacts"/>}/>
           <Route path = "/contacts" element={<Contacts contacts={contacts} loading={loading}/>}/>
-          <Route path ="/add" element={<AddContact loading ={loading} userInfo={userInfo}/>}/>
+          <Route path ="/add" element={<AddContact loading ={loading} userInfo={userInfo} setUserInfo = {setUserInfo}/>}/>
       </Routes>
   </div>
 )
