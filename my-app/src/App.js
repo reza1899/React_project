@@ -13,9 +13,10 @@ function App() {
   const [loading , setLoading] = useState (false)
     const [userInfo , setUserInfo] = useState({
         fullName : "",
+        mobile : "",
         image : "",
-        phoneNumber : "",
         email : "",
+        group : ""
         }
     )
    useEffect(()=> {

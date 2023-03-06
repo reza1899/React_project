@@ -19,52 +19,56 @@ const AddContact = ({loading , userInfo ,setUserInfo}) => {
      }
      getGroups()
    },[])
-    console.log(groups)
+    const postUser = () => {
+        try{
+            axios.post("http://localhost:9000/contacts", userInfo).then(response => {
+                console.log(response)
+                setUserInfo({})
+                Navigate("/contacts")
+                }
+            )
+        }
+        catch (err) {
+            console.log(err.message)
+        }
+    }
+    const setcontactinfo = (e) => {
+        setUserInfo({
+            ...userInfo,
+            [e.target.name] : e.target.value
+            }
+        )
+    }
     return(
         <>
             {loading ? <Spinner/> :
                 <div className="row m-0 d-flex justify-content-around">
                     <div className="col-md-4 col-12 p-5 text-center">
-                        <input name="fullName" value={userInfo.fullName} onChange={e => {
-                           setUserInfo({
-                               ...userInfo.fullName,
-                               fullName : e.target.value
-                           })
-                        }}
+                        <input name="fullName" value={userInfo.fullName} onChange={setcontactinfo}
                         className="form-control" type="text" placeholder="نام و نام خانوادگی" required={true}/>
-                        <input name="image" value={userInfo.image} onChange={e => {
-                            setUserInfo({
-                                ...userInfo.image,
-                                image : e.target.value
-                            })
-                        }} className="form-control my-2" type="text" placeholder="آدرس عکس" required={true}/>
-                        <input name="phoneNumber" value={userInfo.phoneNumber} onChange={e => {
-                            setUserInfo({
-                                ...userInfo.phoneNumber,
-                                phoneNumber : e.target.value
-                            })
-                        }} type="tel"
+                        <input name="image" value={userInfo.image} onChange={setcontactinfo}
+                         className="form-control my-2" type="text" placeholder="آدرس عکس" required={true}/>
+                        <input name="mobile" value={userInfo.mobile} onChange={setcontactinfo}
+                         type="tel"
                                placeholder="09xxxxxxxxx"
                                pattern="[0-9]{4}-[0-9]{3}-[0-9]{4}"
                                className="form-control"
                                required={true}/>
-                        <input name="email" value={userInfo.email} onChange={e => {
-                            setUserInfo ({
-                                ...userInfo.email,
-                                email : e.target.value
-                            })
-                        }} className="form-control my-2" type="email" placeholder="ایمیل" required={true}/>
-                        <input className="form-control" list="datalistOptions" id="exampleDataList"
-                               placeholder="انتخاب گروه" required={true}/>
-                        <datalist id="datalistOptions">
-                            <option value="San Francisco"/>
-                            <option value="New York"/>
-                            <option value="Seattle"/>
-                            <option value="Los Angeles"/>
-                            <option value="Chicago"/>
-                        </datalist>
+                        <input name="email" value={userInfo.email} onChange={setcontactinfo} className="form-control my-2" type="email" placeholder="ایمیل" required={true}/>
+                        <select required={true} value={userInfo.group} onChange={setcontactinfo} className="form-control"
+                           >
+                            <option value="">انتخاب گروه</option>
+                            {
+                                groups.length > 0 &&
+                                groups.map(group => (
+                                    <option key={group.id} value={group.name}>{group.name}</option>
+                                    )
+
+                                )
+                            }
+                        </select>
                         <div className="p-3">
-                            <button style={{ color: "#f99a5f" }} className="btn btn-outline-secondary ms-2">ساخت مخاطب</button>
+                            <button style={{ color: "#f99a5f" }} className="btn btn-outline-secondary ms-2" onClick={postUser}>ساخت مخاطب</button>
                             <button style={{ color: "#F4DB7D" }} className="btn btn-outline-secondary" onClick={() => Navigate("/contacts")}>انصراف</button>
                         </div>
                     </div>

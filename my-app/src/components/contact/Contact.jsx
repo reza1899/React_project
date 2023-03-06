@@ -12,7 +12,7 @@ const Contact = ({contact}) => {
                             <div className="col-md-7 col-sm-7">
                                 <div>
                                     <ul className="list-group">
-                                        <li style={{backgroundColor:NARANJI}} className="list-group-item">نام و نام خانوداگی:{" "}<span className="fw-bold">{contact.name}</span></li>
+                                        <li style={{backgroundColor:NARANJI}} className="list-group-item">نام و نام خانوداگی:{" "}<span className="fw-bold">{contact.fullName}</span></li>
                                         <li style={{backgroundColor:NARANJI}} className="list-group-item">شماره موبایل: {" "} <span className="fw-bold">{contact.mobile}</span></li>
                                         <li style={{backgroundColor:NARANJI}} className="list-group-item">آدرس ایمیل : {" "} <span className="fw-bold">{contact.email}</span></li>
                                     </ul>
