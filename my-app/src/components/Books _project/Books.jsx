@@ -24,7 +24,7 @@
 //                        }
 //                        }
 //                    )
-//                         .map(data => (
+//                         .map(data => ( 
 //                         <Link to={`/book/${data.number}`} className="d-block fs-4" key={data.number}>{data.name}</Link> 
 //                     ))
 //                 }
