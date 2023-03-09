@@ -1,7 +1,35 @@
-import {ROS,NARANJI} from "../../helpers/Colors"
-import {useNavigate} from "react-router-dom";
-const Contact = ({contact}) => {
+import {useEffect, useState} from "react";
+import {getContact,getGroupId} from "../../services/services";
+import {useParams, useNavigate} from "react-router-dom";
+import {NARANJI, ROS} from "../../helpers/Colors";
+// import axios from "axios";
+const ViewContact = () => {
     const navigate = useNavigate()
+   const [state , setstate] = useState({
+       contact : {},
+       group : {}
+   })
+    const {contactId} = useParams()
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try{
+                const {data : contact} = await getContact(contactId)
+                const {data : group} = await getGroupId(contact.group)
+                setstate({
+                        ...state,
+                        contact : contact,
+                        group: group
+                    }
+                    )
+            }
+            catch (err)  {
+                console.log(err.message)
+            }
+        }
+        fetchData()
+    },[])
+    const {contact,group} = state
     return (
         <>
             <div className="col-md-6">
@@ -17,6 +45,8 @@ const Contact = ({contact}) => {
                                         <li style={{backgroundColor:NARANJI}} className="list-group-item">نام و نام خانوداگی:{" "}<span className="fw-bold">{contact.fullName}</span></li>
                                         <li style={{backgroundColor:NARANJI}} className="list-group-item">شماره موبایل: {" "} <span className="fw-bold">{contact.mobile}</span></li>
                                         <li style={{backgroundColor:NARANJI}} className="list-group-item">آدرس ایمیل : {" "} <span className="fw-bold">{contact.email}</span></li>
+                                        <li style={{backgroundColor:NARANJI}} className="list-group-item">دسته:{" "}<span className="fw-bold">{group.name}</span></li>
+
                                     </ul>
                                 </div>
                             </div>
@@ -32,4 +62,4 @@ const Contact = ({contact}) => {
         </>
     )
 }
-export default Contact
+export default ViewContact

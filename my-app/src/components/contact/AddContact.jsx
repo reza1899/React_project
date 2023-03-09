@@ -2,8 +2,16 @@ import Spinner from "../Spinner";
 import {useNavigate} from "react-router-dom";
 import {useEffect, useState} from "react";
 import axios from "axios";
-const AddContact = ({loading , userInfo ,setUserInfo}) => {
+const AddContact = ({loading ,updatePage,setUpdatePage}) => {
     const [groups ,setGroups] = useState([])
+    const [userInfo , setUserInfo] = useState({
+            fullName : "",
+            mobile : "",
+            image : "",
+            email : "",
+            group : ""
+        }
+    )
     const Navigate = useNavigate()
    useEffect(() => {
      const getGroups = async () => {
@@ -18,12 +26,14 @@ const AddContact = ({loading , userInfo ,setUserInfo}) => {
          }
      }
      getGroups()
+
    },[])
     const postUser = () => {
         try{
             axios.post("http://localhost:9000/contacts", userInfo).then(response => {
                 console.log(response)
                 setUserInfo({})
+                setUpdatePage(!updatePage)
                 Navigate("/contacts")
                 }
             )
@@ -55,13 +65,13 @@ const AddContact = ({loading , userInfo ,setUserInfo}) => {
                                className="form-control"
                                required={true}/>
                         <input name="email" value={userInfo.email} onChange={setcontactinfo} className="form-control my-2" type="email" placeholder="ایمیل" required={true}/>
-                        <select required={true} value={userInfo.group} onChange={setcontactinfo} className="form-control"
+                        <select name="group" required={true} value={userInfo.group} onChange={setcontactinfo} className="form-control"
                            >
                             <option value="">انتخاب گروه</option>
                             {
                                 groups.length > 0 &&
                                 groups.map(group => (
-                                    <option key={group.id} value={group.name}>{group.name}</option>
+                                    <option key={group.id} value={group.id}>{group.name}</option>
                                     )
 
                                 )

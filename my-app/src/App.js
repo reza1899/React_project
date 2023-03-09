@@ -6,19 +6,14 @@ import {
     Navbar,
     Contacts,
     AddContact,
+    Edit,
+    ViewContact
 } from "./components";
 
 function App() {
   const [contacts , setContacts] = useState([])
+    const [updatePage,setUpdatePage] = useState(false)
   const [loading , setLoading] = useState (false)
-    const [userInfo , setUserInfo] = useState({
-        fullName : "",
-        mobile : "",
-        image : "",
-        email : "",
-        group : ""
-        }
-    )
    useEffect(()=> {
       const fetch = async () => {
           try {
@@ -36,7 +31,7 @@ function App() {
           }
       }
       fetch()
-   },[])
+   },[updatePage])
     // console.log(api)
 return(
   <div className="App">
@@ -44,7 +39,9 @@ return(
       <Routes>
           <Route path="/" element={<Navigate to="/contacts"/>}/>
           <Route path = "/contacts" element={<Contacts contacts={contacts} loading={loading}/>}/>
-          <Route path ="/add" element={<AddContact loading ={loading} userInfo={userInfo} setUserInfo = {setUserInfo}/>}/>
+          <Route path ="/add" element={<AddContact loading ={loading} updatePage={updatePage} setUpdatePage={setUpdatePage}/>}/>
+          <Route path ="/edit" element={<Edit/>}/>
+          <Route path = "/contact/:contactId" element={<ViewContact />}/>
       </Routes>
   </div>
 )
