@@ -1,10 +1,8 @@
 import {useEffect, useState} from "react";
 import {getContact,getGroupId} from "../../services/services";
-import {useParams, useNavigate} from "react-router-dom";
+import {useParams} from "react-router-dom";
 import {NARANJI, ROS} from "../../helpers/Colors";
-// import axios from "axios";
 const ViewContact = () => {
-    const navigate = useNavigate()
    const [state , setstate] = useState({
        contact : {},
        group : {}
@@ -32,7 +30,7 @@ const ViewContact = () => {
     const {contact,group} = state
     return (
         <>
-            <div className="col-md-6">
+            {Object.keys(contact).length > 0 && (<div className="col-md-6">
                 <div style={{backgroundColor:ROS}} className="container card my-2">
                     <div className="card-body">
                         <div className="row align-items-center d-flex justify-content-around">
@@ -52,13 +50,13 @@ const ViewContact = () => {
                             </div>
                             <div className="col-md-1 col-sm-1 d-flex flex-column align-items-center">
                                 <button className="btn bg-warning"><i className="fa fa-eye"/></button>
-                                <button className="btn bg-info my-2" onClick={() => navigate("/edit")}><i className="fa fa-pen"/></button>
+                                <button className="btn bg-info my-2"><i className="fa fa-pen"/></button>
                                 <button className="btn bg-danger"><i className="fa fa-trash"/></button>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>)}
         </>
     )
 }

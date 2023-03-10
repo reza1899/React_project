@@ -32,6 +32,9 @@ function App() {
       }
       fetch()
    },[updatePage])
+    const refresh = () => {
+        window.location.reload(true)
+    }
     // console.log(api)
 return(
   <div className="App">
@@ -40,8 +43,8 @@ return(
           <Route path="/" element={<Navigate to="/contacts"/>}/>
           <Route path = "/contacts" element={<Contacts contacts={contacts} loading={loading}/>}/>
           <Route path ="/add" element={<AddContact loading ={loading} updatePage={updatePage} setUpdatePage={setUpdatePage}/>}/>
-          <Route path ="/edit" element={<Edit/>}/>
-          <Route path = "/contacts/:contactId" element={<ViewContact />}/>
+          <Route path ="/edit/:contactId" element={<Edit loading={loading} refresh ={refresh}/>}/>
+          <Route path = "/contacts/:contactId" element={<ViewContact  loading={loading}/>}/>
       </Routes>
   </div>
 )
