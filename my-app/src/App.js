@@ -11,9 +11,9 @@ import {
 } from "./components";
 
 function App() {
-  const [contacts , setContacts] = useState([])
+    const [contacts , setContacts] = useState([])
     const [updatePage,setUpdatePage] = useState(false)
-  const [loading , setLoading] = useState (false)
+    const [loading , setLoading] = useState (false)
    useEffect(()=> {
       const fetch = async () => {
           try {
@@ -41,7 +41,7 @@ return(
           <Route path = "/contacts" element={<Contacts contacts={contacts} loading={loading}/>}/>
           <Route path ="/add" element={<AddContact loading ={loading} updatePage={updatePage} setUpdatePage={setUpdatePage}/>}/>
           <Route path ="/edit" element={<Edit/>}/>
-          <Route path = "/contact/:contactId" element={<ViewContact />}/>
+          <Route path = "/contacts/:contactId" element={<ViewContact />}/>
       </Routes>
   </div>
 )

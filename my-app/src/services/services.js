@@ -5,6 +5,9 @@ export const getContacts = () => {
 export const getContact =  (contactId) => {
    return ( axios.get(`http://localhost:9000/contacts/${contactId}`))
 }
+export const deleteCard =  (contactId) => {
+    return ( axios.delete(`http://localhost:9000/contacts/${contactId}`))
+}
 export const getGroups = () => {
     return (
         axios.get("http://localhost:9000/groups")

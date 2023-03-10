@@ -1,7 +1,12 @@
 import {ROS,NARANJI} from "../../helpers/Colors"
 import {useNavigate} from "react-router-dom";
+import {deleteCard} from "../../services/services";
 const Contact = ({contact}) => {
     const navigate = useNavigate()
+    const seeCard = useNavigate()
+    const refresh = () => {
+        window.location.reload(true)
+    }
     return (
         <>
             <div className="col-md-6">
@@ -21,9 +26,11 @@ const Contact = ({contact}) => {
                                 </div>
                             </div>
                             <div className="col-md-1 col-sm-1 d-flex flex-column align-items-center">
-                                <button className="btn bg-warning"><i className="fa fa-eye"/></button>
+                                <button className="btn bg-warning" onClick={() => {seeCard(`/contacts/${contact.id}`)}}><i className="fa fa-eye"/></button>
                                 <button className="btn bg-info my-2" onClick={() => navigate("/edit")}><i className="fa fa-pen"/></button>
-                                <button className="btn bg-danger"><i className="fa fa-trash"/></button>
+                                <button className="btn bg-danger" onClick={() => {
+                                    {deleteCard(contact.id)} {refresh()}
+                                }}><i className="fa fa-trash"/></button>
                             </div>
                         </div>
                     </div>
