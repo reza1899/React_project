@@ -53,7 +53,7 @@ const ViewContact = () => {
                             <div className="col-md-1 col-sm-1 d-flex flex-column align-items-center">
                                 <button className="btn bg-warning"><i className="fa fa-eye"/></button>
                                 <button className="btn bg-info my-2" onClick={() => navigate("/edit")}><i className="fa fa-pen"/></button>
-                                <button className="btn bg-danger"><i className="fa fa-trash"/></button>
+                                <button className="btn bg-danger"><i className="fa fa-trash"/></button> 
                             </div>
                         </div>
                     </div>
