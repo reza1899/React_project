@@ -1,11 +1,30 @@
 import {ROS,NARANJI} from "../../helpers/Colors"
 import {useNavigate} from "react-router-dom";
 import {deleteCard} from "../../services/services";
+import { confirmAlert } from "react-confirm-alert";
 const Contact = ({contact}) => {
     const navigate = useNavigate()
     const seeCard = useNavigate()
     const refresh = () => {
         window.location.reload(true)
+    }
+    const confirmDelete = (contact) => {
+        confirmAlert( {
+            customUI : ( {onClose} ) => {
+                return (
+                    <div style={{backgroundColor : "#9DAAF2"}} className="p-4">
+                        <h1 style={{color:"#f99a5f"}}>حذف مخاطب</h1>
+                        <p>ایا میخواهی مخاطب {contact.fullName}را پاک کنی ؟؟</p>
+                        <button className="btn  btn-success" onClick={() => {
+                            deleteCard(contact.id);
+                             onClose();
+                             refresh()
+                        }}>بله</button>
+                        <button className="btn btn-danger" onClick={onClose}>خیر</button>
+                    </div>
+                )
+            }
+        })
     }
     return (
         <>
@@ -29,7 +48,7 @@ const Contact = ({contact}) => {
                                 <button className="btn bg-warning" onClick={() => {seeCard(`/contacts/${contact.id}`)}}><i className="fa fa-eye"/></button>
                                 <button className="btn bg-info my-2" onClick={() => navigate(`/edit/${contact.id}`)}><i className="fa fa-pen"/></button>
                                 <button className="btn bg-danger" onClick={() => {
-                                    {deleteCard(contact.id)} {refresh()}
+                                    confirmDelete(contact)
                                 }}><i className="fa fa-trash"/></button>
                             </div>
                         </div>

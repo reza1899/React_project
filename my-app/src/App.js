@@ -1,7 +1,6 @@
 import {useState,useEffect} from "react"
 import './App.css'
 // react-confirm-alert
-import { confirmAlert } from 'react-confirm-alert'
 // end react-confirm-alert
 import axios from "axios";
 import {Routes,Route,Navigate} from "react-router-dom"
