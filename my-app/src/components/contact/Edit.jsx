@@ -15,7 +15,7 @@ const Edit = ({loading , refresh}) => {
     useEffect(() =>{
         const fetchData = async () => {
             try {
-                const {data : data} = await getContact(contactId)
+                const {data : data} = await getContact(contactId) 
                 const {data : data2} = await getGroups()
                 setstate({
                     ...state,
