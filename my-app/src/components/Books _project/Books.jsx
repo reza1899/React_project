@@ -9,7 +9,7 @@
 //                 <input value={searchParams.get("filter")} onChange={event => {
 //                     let filter = event.target.value
 //                     if (filter) {
-//                         setSearchParams({filter})
+//                         setSearchParams({filter}) 
 //                     }else {
 //                         setSearchParams({})
 //                     }
