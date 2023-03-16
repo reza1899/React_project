@@ -1,9 +1,10 @@
 import SearchContact from "./contact/SearchContact";
 import {ROS , ZARD} from "../helpers/Colors"
-import {useNavigate} from "react-router-dom";
+import {useNavigate , useLocation} from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({ contacts,setNewContacts }) => {
     const Navigate = useNavigate()
+    const location = useLocation()
     return (
         <nav className="navbar navbar-expand-lg shadow-lg p-3">
             <div className="container mt-2">
@@ -13,9 +14,11 @@ const Navbar = () => {
                         <h6 style={{color: ZARD}} className="d-flex">وب اپلیکیشن مدیریت{" "} <div style={{color:ROS, marginRight:"4px", fontWeight:"bolder"}}>مخاطبین</div> </h6>
                         <button className="btn btn-primary mx-5" onClick={()=> Navigate("/add")}>ساخت مخاطب جدید</button>
                     </div>
-                    <div className="col p-0">
-                        <SearchContact/>
-                    </div>
+                    {
+                        location.pathname === "/contacts" ? (<div className="col p-0">
+                        <SearchContact  setNewContacts = {setNewContacts} contacts = {contacts}/>
+                    </div>) : null
+                    }
                 </div>
             </div>
         </nav>

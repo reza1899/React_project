@@ -14,6 +14,7 @@ import {
 
 function App() {
     const [contacts , setContacts] = useState([])
+    const [newContacts ,setNewContacts] = useState([])
     const [updatePage,setUpdatePage] = useState(false)
     const [loading , setLoading] = useState (false)
    useEffect(()=> {
@@ -22,6 +23,7 @@ function App() {
               setLoading(true)
              await axios.get("http://localhost:9000/contacts").then( data => {
                       setContacts(data.data)
+                      setNewContacts(data.data)
                   }
               )
               setLoading(false)
@@ -40,10 +42,10 @@ function App() {
     // console.log(api)
 return(
   <div className="App">
-    <Navbar />
+    <Navbar  contacts = {contacts} setNewContacts= {setNewContacts}  />
       <Routes>
           <Route path="/" element={<Navigate to="/contacts"/>}/>
-          <Route path = "/contacts" element={<Contacts contacts={contacts} loading={loading}/>}/>
+          <Route path = "/contacts" element={<Contacts contacts={newContacts} loading={loading}/>}/>
           <Route path ="/add" element={<AddContact loading ={loading} updatePage={updatePage} setUpdatePage={setUpdatePage}/>}/>
           <Route path ="/edit/:contactId" element={<Edit loading={loading} refresh ={refresh}/>}/>
           <Route path = "/contacts/:contactId" element={<ViewContact  loading={loading}/>}/>
