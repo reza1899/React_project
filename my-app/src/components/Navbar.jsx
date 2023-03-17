@@ -6,7 +6,7 @@ const Navbar = ({ contacts,setNewContacts }) => {
     const Navigate = useNavigate()
     const location = useLocation()
     return (
-        <nav className="navbar navbar-expand-lg shadow-lg p-3">
+        <nav className="navbar navbar-expand-lg shadow-lg p-3"> 
             <div className="container mt-2">
                 <div className="row m-0 w-100">
                     <div className="col p-0 d-flex">
