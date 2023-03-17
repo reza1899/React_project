@@ -1,12 +1,11 @@
 import SearchContact from "./contact/SearchContact";
 import {ROS , ZARD} from "../helpers/Colors"
 import {useNavigate , useLocation} from "react-router-dom";
-
-const Navbar = ({ contacts,setNewContacts }) => {
+const Navbar = () => {
     const Navigate = useNavigate()
     const location = useLocation()
     return (
-        <nav className="navbar navbar-expand-lg shadow-lg p-3"> 
+            <nav className="navbar navbar-expand-lg shadow-lg p-3"> 
             <div className="container mt-2">
                 <div className="row m-0 w-100">
                     <div className="col p-0 d-flex">
@@ -16,7 +15,7 @@ const Navbar = ({ contacts,setNewContacts }) => {
                     </div>
                     {
                         location.pathname === "/contacts" ? (<div className="col p-0">
-                        <SearchContact  setNewContacts = {setNewContacts} contacts = {contacts}/>
+                        <SearchContact/>
                     </div>) : null
                     }
                 </div>

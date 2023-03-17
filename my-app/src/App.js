@@ -1,8 +1,9 @@
-import {useState,useEffect} from "react"
+import {useState,useEffect,createContext} from "react"
 import './App.css'
 // react-confirm-alert
 // end react-confirm-alert
 import axios from "axios";
+import contextApi from "./context/contextApi" 
 import {Routes,Route,Navigate} from "react-router-dom"
 import {
     Navbar,
@@ -41,8 +42,18 @@ function App() {
     }
     // console.log(api)
 return(
-  <div className="App">
-    <Navbar  contacts = {contacts} setNewContacts= {setNewContacts}  />
+  <contextApi.Provider value = {{
+    loading,
+    setLoading,
+    contacts,
+    setContacts,
+    updatePage,
+    setUpdatePage,
+    newContacts,
+    setNewContacts,
+  }}>
+    <div className="App">
+    <Navbar />
       <Routes>
           <Route path="/" element={<Navigate to="/contacts"/>}/>
           <Route path = "/contacts" element={<Contacts contacts={newContacts} loading={loading}/>}/>
@@ -51,6 +62,7 @@ return(
           <Route path = "/contacts/:contactId" element={<ViewContact  loading={loading}/>}/>
       </Routes>
   </div>
+  </contextApi.Provider>
 )
 }
 

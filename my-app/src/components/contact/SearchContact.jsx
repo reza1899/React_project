@@ -1,7 +1,8 @@
-import { useState } from "react"
+import { useState  ,useContext} from "react"
+import contextApi from "./../../context/contextApi" 
 import {ROS} from "../../helpers/Colors"
-
-const SearchContact = ({ contacts,setNewContacts}) => {
+const SearchContact = () => {
+    const {contacts , setNewContacts} = useContext(contextApi)
     const [search , setSearch] = useState({text : ""})
     const searching = (event) => {
         setSearch({...search , text : event.target.value})
@@ -9,7 +10,7 @@ const SearchContact = ({ contacts,setNewContacts}) => {
             return contact.fullName.toLowerCase().includes(search.text)
         }) 
         if (search.text === "") {
-            setNewContacts(contacts)
+           setNewContacts(contacts)
         } else {
             setNewContacts(allContacts)
         }
