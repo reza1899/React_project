@@ -23,7 +23,7 @@ const SearchContact = () => {
                         <i className="fas fa-search text-white"/>
                     </button>
             </form>
-        </div>
+        </div> 
     )
 }
 export default SearchContact
