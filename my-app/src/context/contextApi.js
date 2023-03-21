@@ -8,6 +8,7 @@ const contexts = React.createContext({
     setUpdatePage : () => {},
     newContacts : {},
     setNewContacts : () => {},
+    refresh : () => {},
 
 })
 export default contexts;

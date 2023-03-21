@@ -1,9 +1,11 @@
 import {useNavigate, useParams} from "react-router-dom";
-import {useEffect, useState} from "react";
+import {useEffect, useState , useContext} from "react";
 import {getContact, getGroups,updateContact} from "../../services/services";
+import contextApi from "./../../context/contextApi"
 import Spinner from "../Spinner";
 
-const Edit = ({loading , refresh}) => {
+const Edit = () => {
+    const {loading , setLoading , refresh }  = useContext(contextApi)
     const Navigate =useNavigate()
     const {contactId} = useParams()
     // const [groups , setGroups] =useState([])
@@ -15,6 +17,7 @@ const Edit = ({loading , refresh}) => {
     useEffect(() =>{
         const fetchData = async () => {
             try {
+                setLoading(true) 
                 const {data : data} = await getContact(contactId) 
                 const {data : data2} = await getGroups()
                 setstate({
@@ -24,9 +27,12 @@ const Edit = ({loading , refresh}) => {
                 })
                 // setGroups(data2)
                 // setContactInfo(data)
+                setLoading(false)
                 }
             catch (err) {
+                setLoading (true)
                 console.log(err.message)
+                setLoading (false)
             }
             }
             fetchData()
@@ -71,7 +77,9 @@ const Edit = ({loading , refresh}) => {
                         </select>
                         <div className="p-3">
                             <button style={{ color: "#f99a5f" }} className="btn btn-outline-secondary ms-2" onClick={() => {
-                                { updateContact(contactId ,state.contactInfo) } { Navigate("/contacts")} {refresh()}
+                                 updateContact(contactId ,state.contactInfo)  
+                                 Navigate("/contacts") 
+                                 refresh()
                             }}>ویرایش مخاطب</button>
                             <button style={{ color: "#F4DB7D" }} className="btn btn-outline-secondary" onClick={() => Navigate("/contacts")}>انصراف</button>
                         </div>

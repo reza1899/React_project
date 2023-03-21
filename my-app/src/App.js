@@ -1,7 +1,5 @@
-import {useState,useEffect,createContext} from "react"
+import {useState,useEffect} from "react"
 import './App.css'
-// react-confirm-alert
-// end react-confirm-alert
 import axios from "axios";
 import contextApi from "./context/contextApi" 
 import {Routes,Route,Navigate} from "react-router-dom"
@@ -10,7 +8,8 @@ import {
     Contacts,
     AddContact,
     Edit,
-    ViewContact
+    ViewContact,
+    UseReff
 } from "./components";
 
 function App() {
@@ -51,6 +50,7 @@ return(
     setUpdatePage,
     newContacts,
     setNewContacts,
+    refresh,
   }}>
     <div className="App">
     <Navbar />
@@ -60,6 +60,7 @@ return(
           <Route path ="/add" element={<AddContact loading ={loading} updatePage={updatePage} setUpdatePage={setUpdatePage}/>}/>
           <Route path ="/edit/:contactId" element={<Edit loading={loading} refresh ={refresh}/>}/>
           <Route path = "/contacts/:contactId" element={<ViewContact  loading={loading}/>}/>
+          <Route path = "/ref" element={<UseReff/>} />
       </Routes>
   </div>
   </contextApi.Provider>
