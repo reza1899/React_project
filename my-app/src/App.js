@@ -9,7 +9,7 @@ import {
     AddContact,
     Edit,
     ViewContact,
-    UseReff
+    Acordian
 } from "./components";
 
 function App() {
@@ -60,7 +60,7 @@ return(
           <Route path ="/add" element={<AddContact loading ={loading} updatePage={updatePage} setUpdatePage={setUpdatePage}/>}/>
           <Route path ="/edit/:contactId" element={<Edit loading={loading} refresh ={refresh}/>}/>
           <Route path = "/contacts/:contactId" element={<ViewContact  loading={loading}/>}/>
-          <Route path = "/ref" element={<UseReff/>} />
+          <Route path = "/acordian" element={<Acordian/>} />
       </Routes>
   </div>
   </contextApi.Provider>

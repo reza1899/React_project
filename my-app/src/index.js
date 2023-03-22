@@ -6,8 +6,8 @@ import reportWebVitals from './reportWebVitals';
 // react-confirm-alert-css
 import 'react-confirm-alert/src/react-confirm-alert.css';
 // bootstrap
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.min.js';
+// import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/js/bootstrap.min.js';
 // end bootstrap
 import {BrowserRouter} from "react-router-dom"
 const root = ReactDOM.createRoot(document.getElementById('root'));
