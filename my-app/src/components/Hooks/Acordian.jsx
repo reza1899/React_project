@@ -52,7 +52,7 @@ const Acordian = () => {
           </h2>
           <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
             <div class="accordion-body">
-              nothing
+              با این هوک میتونی از اجرا شدن دستورات و توابعی که نیاز نداری که اجرا بشن جلو گیری کنی و در نتیجه سرعت سایت رو ببری بالا
             </div>
           </div>
         </div>
@@ -67,6 +67,30 @@ const Acordian = () => {
               <button className="btn btn-success p-1" onClick={() => {dispatch( {type : "INC"} )}}>اضافه کن</button>
               <p> {state.number} </p>
               <button className="btn btn-danger p-1" onClick={() => {dispatch({type : "DEC"})}}>کم کن</button>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingFour">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+             useLayoutEffect
+            </button>
+          </h2>
+          <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              این هوگ دقیقا عین useeffect میمونه با این تفاوت که سریع تر از useeffect اجرا میشه و به صورت سنکرون هست
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingFive">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+              memo hook 
+            </button>
+          </h2>
+          <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              با این هوک میتونی از اجرا شدن دستورات و توابعی که نیاز نداری که اجرا بشن جلو گیری کنی و در نتیجه سرعت سایت رو ببری بالا
             </div>
           </div>
         </div>
