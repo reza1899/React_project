@@ -1,13 +1,17 @@
-import { useRef, useEffect, useState , useReducer} from "react"
+import { useRef, useEffect, useState , useReducer ,useImperativeHandle} from "react"
 const Acordian = () => {
+  
+  // useRef
+
   const [name, setName] = useState("")
   const ref = useRef("")
   useEffect(() => {
     ref.current = name
   }, [name])
 
+  // end useRef
 
-
+//  useReducer
   const reducer = (state , action ) => {
   if (action.type === "INC") {
     return {number : state.number + 1}
@@ -19,7 +23,20 @@ const Acordian = () => {
   }
 
     const [state , dispatch] = useReducer (reducer , {number : 0})
+// end  useReducer
 
+// useImperativeHandle
+
+const example = (props , ref) => {
+const inputRef = useRef()
+useImperativeHandle (ref => ({
+  focus : () => {
+    alert("Hi")
+  }
+}))
+}
+
+// end useImperativeHandle
 
   return ( 
     <>
@@ -27,7 +44,7 @@ const Acordian = () => {
         <div class="accordion-item">
           <h2 class="accordion-header" id="headingOne">
             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-             Ref hook
+             useRef 
             </button>
           </h2>
           <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
@@ -35,8 +52,8 @@ const Acordian = () => {
               <div className="bg-success p-5 text-center m-5">
                 برای فکوس کردن روی اینپوت دکمه را کلیک کنید
               </div>
-              <p className="text-white text-center">نام قغلی شما برابر است با: {name}</p>
-              <p className="text-white text-center">نام قبلی شما برابر است با: {ref.current}</p>
+              <p className="text-center">نام قغلی شما برابر است با: {name}</p>
+              <p className="text-center">نام قبلی شما برابر است با: {ref.current}</p>
               <input type="text" placeholder="my input" value={name} onChange={e => { setName(e.target.value) }} className="me-5 " ref={ref} />
               <button className="bg-danger btn m-4" >
                 click for focus
@@ -85,12 +102,18 @@ const Acordian = () => {
         <div class="accordion-item">
           <h2 class="accordion-header" id="headingFive">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-              memo hook 
+            useImperativeHandle
             </button>
           </h2>
           <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
             <div class="accordion-body">
-              با این هوک میتونی از اجرا شدن دستورات و توابعی که نیاز نداری که اجرا بشن جلو گیری کنی و در نتیجه سرعت سایت رو ببری بالا
+             در این هوک ما میتوانیم بیایم ref را شخصی سازی کنیم یعنی بیاییم و بگوییم وقتی از این ref استفاده میشود چه اتفاقی بیوفتد :
+             <div className="d-block m-4 text-center">
+              <input ref={inputRef} type="text" placeholder="useImperativeHandle" />
+              <button className="btn btn-success p-2 mx-4" onClick={() => {
+               inputRef.current.focus()
+              }}>focus on input</button>
+             </div>
             </div>
           </div>
         </div>
