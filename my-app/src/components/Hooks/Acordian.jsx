@@ -111,7 +111,7 @@ useImperativeHandle (ref => ({
              <div className="d-block m-4 text-center">
               <input ref={inputRef} type="text" placeholder="useImperativeHandle" />
               <button className="btn btn-success p-2 mx-4" onClick={() => {
-               inputRef.current.focus()
+               inputRef.current.focus() 
               }}>focus on input</button>
              </div>
             </div>
