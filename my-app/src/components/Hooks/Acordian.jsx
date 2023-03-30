@@ -1,4 +1,16 @@
-import { useRef, useEffect, useState , useReducer ,useImperativeHandle} from "react"
+import { useRef, useEffect, useState , useReducer ,useImperativeHandle , forwardRef} from "react"
+
+let Funcyref = (props , ref) => {
+  const inputRef = useRef()
+  useImperativeHandle (ref , () => ({
+    focus : () => {
+     alert("yse")
+    }
+  }))
+  return <input ref={inputRef} {...props} />
+}
+Funcyref = forwardRef(Funcyref)
+
 const Acordian = () => {
   
   // useRef
@@ -27,13 +39,10 @@ const Acordian = () => {
 
 // useImperativeHandle
 
-const example = (props , ref) => {
-const inputRef = useRef()
-useImperativeHandle (ref => ({
-  focus : () => {
-    alert("Hi")
-  }
-}))
+const inputRef = useRef(null)
+
+const handleRef = () => {
+inputRef.current.focus()
 }
 
 // end useImperativeHandle
@@ -109,9 +118,9 @@ useImperativeHandle (ref => ({
             <div class="accordion-body">
              در این هوک ما میتوانیم بیایم ref را شخصی سازی کنیم یعنی بیاییم و بگوییم وقتی از این ref استفاده میشود چه اتفاقی بیوفتد :
              <div className="d-block m-4 text-center">
-              <input ref={inputRef} type="text" placeholder="useImperativeHandle" />
+              <Funcyref ref={inputRef} type="text" placeholder="useImperativeHandle" />
               <button className="btn btn-success p-2 mx-4" onClick={() => {
-               inputRef.current.focus() 
+                handleRef()
               }}>focus on input</button>
              </div>
             </div>
