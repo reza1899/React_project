@@ -4,7 +4,7 @@ let Funcyref = (props , ref) => {
   const inputRef = useRef()
   useImperativeHandle (ref , () => ({
     focus : () => {
-     alert("yse")
+     alert("yse") 
     }
   }))
   return <input ref={inputRef} {...props} />
