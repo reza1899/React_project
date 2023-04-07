@@ -1,5 +1,4 @@
-import { useRef, useEffect, useState , useReducer ,useImperativeHandle , forwardRef} from "react"
-
+import { useRef, useEffect, useState , useReducer ,useImperativeHandle , forwardRef ,useMemo, useDeferredValue} from "react"
 let Funcyref = (props , ref) => {
   const inputRef = useRef()
   useImperativeHandle (ref , () => ({
@@ -46,6 +45,30 @@ inputRef.current.focus()
 }
 
 // end useImperativeHandle
+
+// use useDeferredValue
+
+const [value , setValue] = useState()
+const handleValue = (e) => {
+  setValue(e.target.value)
+}
+const List = ({value}) => {
+  const deferredValue = useDeferredValue(value)
+  const  list = useMemo(() => {
+    const l = []
+    for (let i = 0 ; i < 20000 ; i ++){
+      l.push (<div key={i}>{deferredValue}</div>)
+    }
+    return l
+  },[deferredValue])
+  useEffect (() => {
+    console.log (`this is value : ${value}`)
+    console.log (`this is deferred value is :${deferredValue} `)
+    },[value,deferredValue])
+  return list
+}
+
+// end useDeferredValue
 
   return ( 
     <>
@@ -127,16 +150,14 @@ inputRef.current.focus()
           </div>
         </div>
         <div class="accordion-item">
-          <h2 class="accordion-header" id="headingThree">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-             useReducer
+          <h2 class="accordion-header" id="headingSeven">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+             useTransition
             </button>
           </h2>
-          <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+          <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
             <div class="accordion-body d-block text-center">
-              <button className="btn btn-success p-1" onClick={() => {dispatch( {type : "INC"} )}}>اضافه کن</button>
-              <p> {state.number} </p>
-              <button className="btn btn-danger p-1" onClick={() => {dispatch({type : "DEC"})}}>کم کن</button>
+              {/*  */}
             </div>
           </div>
         </div>
@@ -148,7 +169,9 @@ inputRef.current.focus()
           </h2>
           <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
             <div class="accordion-body">
-              {/*  */}
+             <input type="text" placeholder="number" value={value} onChange={handleValue}/>
+              {value !== 0 ? <List value = {value} /> : null}
+              این هوک برای به تعویق انداختن یکسری محاسبات میباشد که برای بالا بردن سرعت وب سایت کارایی دارد
             </div>
           </div>
         </div>
