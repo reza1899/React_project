@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState , useReducer ,useImperativeHandle , forwardRef ,useMemo, useDeferredValue} from "react"
+import { useRef, useEffect, useState , useReducer ,useImperativeHandle , forwardRef ,useMemo, useDeferredValue, useTransition} from "react"
 let Funcyref = (props , ref) => {
   const inputRef = useRef()
   useImperativeHandle (ref , () => ({
@@ -48,27 +48,47 @@ inputRef.current.focus()
 
 // use useDeferredValue
 
-const [value , setValue] = useState()
-const handleValue = (e) => {
-  setValue(e.target.value)
-}
-const List = ({value}) => {
-  const deferredValue = useDeferredValue(value)
-  const  list = useMemo(() => {
-    const l = []
-    for (let i = 0 ; i < 20000 ; i ++){
-      l.push (<div key={i}>{deferredValue}</div>)
-    }
-    return l
-  },[deferredValue])
-  useEffect (() => {
-    console.log (`this is value : ${value}`)
-    console.log (`this is deferred value is :${deferredValue} `)
-    },[value,deferredValue])
-  return list
-}
+// const [value , setValue] = useState()
+// const handleValue = (e) => {
+//   setValue(e.target.value)
+// }
+// const List = ({value}) => {
+//   const deferredValue = useDeferredValue(value)
+//   const  list = useMemo(() => {
+//     const l = []
+//     for (let i = 0 ; i < 20000 ; i ++){
+//       l.push (<div key={i}>{deferredValue}</div>)
+//     }
+//     return l
+//   },[deferredValue])
+//   useEffect (() => {
+//     console.log (`this is value : ${value}`)
+//     console.log (`this is deferred value is :${deferredValue} `)
+//     },[value,deferredValue])
+//   return list
+// }
 
 // end useDeferredValue
+
+  // useTransition
+  const [isPending , startTransition] = useTransition()
+  const [transition , setTransition] = useState()
+  const [arrey , setArrey] = useState([])
+  const handleEvent = (e) => {
+    setTransition(e.target.value)
+    startTransition(() => {
+
+      let counter = 0
+      const list = []
+      while (counter <= 20000) {
+        list.push(e.target.value)
+        counter++
+      }
+      setArrey(list)
+
+    })
+  }
+  // end useTransition
 
   return ( 
     <>
@@ -149,29 +169,36 @@ const List = ({value}) => {
             </div>
           </div>
         </div>
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="headingSeven">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
-             useTransition 
+        {/*<div class="accordion-item">*/}
+        {/*  <h2 class="accordion-header" id="headingSix">*/}
+        {/*    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">*/}
+        {/*    useDeferredValue*/}
+        {/*    </button>*/}
+        {/*  </h2>*/}
+        {/*  <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">*/}
+        {/*    <div class="accordion-body">*/}
+        {/*     <input type="text" placeholder="number" value={value} onChange={handleValue}/>*/}
+        {/*      {value !== 0 ? <List value = {value} /> : null}*/}
+        {/*      این هوک برای به تعویق انداختن یکسری محاسبات میباشد که برای بالا بردن سرعت وب سایت کارایی دارد و کاربردی شبیه هوک useTransition دارد با این تفاوت که هوک useTransition کارکرد بهتری دارد*/}
+        {/*    </div>*/}
+        {/*  </div>*/}
+        {/*</div>*/}
+        <div className="accordion-item">
+          <h2 className="accordion-header" id="headingSeven">
+            <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+              useTransition
             </button>
           </h2>
-          <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
-            <div class="accordion-body d-block text-center">
-              {/*  */}
-            </div>
-          </div>
-        </div>
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="headingSix">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-            useDeferredValue
-            </button>
-          </h2>
-          <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
-            <div class="accordion-body">
-             <input type="text" placeholder="number" value={value} onChange={handleValue}/>
-              {value !== 0 ? <List value = {value} /> : null}
-              این هوک برای به تعویق انداختن یکسری محاسبات میباشد که برای بالا بردن سرعت وب سایت کارایی دارد
+          <div id="collapseSeven" className="accordion-collapse collapse" aria-labelledby="headingSeven"
+               data-bs-parent="#accordionExample">
+            <div className="accordion-body d-block text-center">
+                <input type="number" placeholder="set a number please" onChange={handleEvent} value={transition}/>
+                  {isPending ? "درحال بارگذاری ..." :  arrey.map((item , index) => {
+                    return <div key={index}>{`number is : ${item}`}</div>
+                  })
+
+                  }
             </div>
           </div>
         </div>
