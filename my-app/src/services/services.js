@@ -1,7 +1,7 @@
 import axios from "axios";
 // Contacts API
 export const getContacts = () => {
-  return(axios.get("http://localhost:9000/contacts"))
+  return(axios.get("http://localhost:9000/contacts")) 
 }
 export const getContact =  (contactId) => {
    return ( axios.get(`http://localhost:9000/contacts/${contactId}`))
