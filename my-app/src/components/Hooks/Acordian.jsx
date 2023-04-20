@@ -32,7 +32,7 @@ const Acordian = () => {
     return state
   }
   }
-
+ 
     const [state , dispatch] = useReducer (reducer , {number : 0})
 // end  useReducer
 
