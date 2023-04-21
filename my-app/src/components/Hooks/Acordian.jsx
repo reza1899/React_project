@@ -225,6 +225,7 @@ console.log(users)
           <div id="collapseEight" className="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
             <div className="accordion-body">
                 <h4 className="d-block text-center mb-5">Custom Hook</h4>
+                <p>ما میتوانیم در ری اکت هوک سفارشی خودمان را بسازیم اما نکته اینجاست که اسم این هوگ حتما باید با use شروع شود</p>
              <div className="text-center">
                <p>برای نمایش نام کاربران روی دکمه کلیک کنید</p>
                <button className="btn btn-success" onClick={() => setShowUsers(!showUsers) }>Click for show users Name</button>
