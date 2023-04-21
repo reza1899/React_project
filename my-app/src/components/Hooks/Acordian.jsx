@@ -11,7 +11,6 @@ let Funcyref = (props , ref) => {
 Funcyref = forwardRef(Funcyref)
 
 const Acordian = () => {
-  
   // useRef
 
   const [name, setName] = useState("")
@@ -90,7 +89,22 @@ inputRef.current.focus()
   }
   // end useTransition
 
-  return ( 
+  // custom Hook
+  const [showUsers , setShowUsers] = useState(false)
+
+  const useFetch = (url) => {
+    const [data ,setData] = useState(null)
+    useEffect(() => {
+      fetch(url)
+          .then((res) => res.json())
+          .then((data) => setData(data))
+    },[url])
+    return [data]
+  }
+const [users] = useFetch('https://jsonplaceholder.ir/users')
+console.log(users)
+  //End Custom Hook
+  return (
     <>
       <div className="accordion" id="accordionExample">
         <div className="accordion-item">
@@ -199,6 +213,30 @@ inputRef.current.focus()
                   })
 
                   }
+            </div>
+          </div>
+        </div>
+        <div className="accordion-item">
+          <h2 className="accordion-header" id="headingEight">
+            <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+              Custom Hook
+            </button>
+          </h2>
+          <div id="collapseEight" className="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
+            <div className="accordion-body">
+                <h4 className="d-block text-center mb-5">Custom Hook</h4>
+             <div className="text-center">
+               <p>برای نمایش نام کاربران روی دکمه کلیک کنید</p>
+               <button className="btn btn-success" onClick={() => setShowUsers(!showUsers) }>Click for show users Name</button>
+               {
+                showUsers ? users.map ((user , index) => (
+                    <div key={index}>
+                      <h5>{user.name}</h5>
+                    </div>
+                    ))
+                    : null
+               }
+             </div>
             </div>
           </div>
         </div>
