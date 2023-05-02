@@ -10,7 +10,7 @@ const AddContact = ({ loading, updatePage, setUpdatePage }) => {
         image: "",
         email: "",
         group: ""
-    }
+    } 
     )
     const Navigate = useNavigate()
     useEffect(() => {
