@@ -2,7 +2,9 @@ import Spinner from "../Spinner";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import * as yup from "yup"
 const AddContact = ({ loading, updatePage, setUpdatePage }) => {
+    const [error , setError] = useState()
     const [groups, setGroups] = useState([])
     const [userInfo, setUserInfo] = useState({
         fullName: "",
@@ -10,8 +12,16 @@ const AddContact = ({ loading, updatePage, setUpdatePage }) => {
         image: "",
         email: "",
         group: ""
-    } 
+    }
     )
+    const Schema = yup.object().shape({
+        fullName : yup.string().required("fullName is not valid"),
+        mobile : yup.number().required("mobile number is required"),
+        image: yup.string().url().required("image is required"),
+        email:yup.string().email().required("email is required"),
+        group : yup.string().required("group is required"),
+
+    })
     const Navigate = useNavigate()
     useEffect(() => {
         const getGroups = async () => {
@@ -28,8 +38,9 @@ const AddContact = ({ loading, updatePage, setUpdatePage }) => {
         getGroups()
 
     }, [])
-    const postUser = () => {
+    const postUser = async () => {
         try {
+            await Schema.validate(userInfo, {abortEarly:false})
             axios.post("http://localhost:9000/contacts", userInfo).then(response => {
                 console.log(response)
                 setUserInfo({})
@@ -39,7 +50,8 @@ const AddContact = ({ loading, updatePage, setUpdatePage }) => {
             )
         }
         catch (err) {
-            console.log(err.message)
+            console.log(err.inner)
+            setError(err)
         }
     }
     const setcontactinfo = (e) => {
@@ -55,17 +67,17 @@ const AddContact = ({ loading, updatePage, setUpdatePage }) => {
                 <div className="row m-0 d-flex justify-content-around">
                     <div className="col-md-4 col-12 p-5 text-center">
                         <input name="fullName" value={userInfo.fullName} onChange={setcontactinfo}
-                            className="form-control" type="text" placeholder="نام و نام خانوادگی" required={true} />
+                            className="form-control" type="text" placeholder="نام و نام خانوادگی"  />
                         <input name="image" value={userInfo.image} onChange={setcontactinfo}
-                            className="form-control my-2" type="text" placeholder="آدرس عکس" required={true} />
+                            className="form-control my-2" type="text" placeholder="آدرس عکس"  />
                         <input name="mobile" value={userInfo.mobile} onChange={setcontactinfo}
                             type="tel"
                             placeholder="09xxxxxxxxx"
                             pattern="[0-9]{4}-[0-9]{3}-[0-9]{4}"
                             className="form-control"
-                            required={true} />
-                        <input name="email" value={userInfo.email} onChange={setcontactinfo} className="form-control my-2" type="email" placeholder="ایمیل" required={true} />
-                        <select name="group" required={true} value={userInfo.group} onChange={setcontactinfo} className="form-control"
+                            />
+                        <input name="email" value={userInfo.email} onChange={setcontactinfo} className="form-control my-2" type="email" placeholder="ایمیل"  />
+                        <select name="group"  value={userInfo.group} onChange={setcontactinfo} className="form-control"
                         >
                             <option value="">انتخاب گروه</option>
                             {
