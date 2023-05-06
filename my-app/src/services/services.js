@@ -1,4 +1,5 @@
 import axios from "axios";
+import {toast} from "react-toastify"
 // Contacts API
 export const getContacts = () => {
   return(axios.get("http://localhost:9000/contacts")) 

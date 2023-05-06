@@ -3,6 +3,7 @@ import {useNavigate} from "react-router-dom";
 import {deleteCard} from "../../services/services";
 import { confirmAlert } from "react-confirm-alert";
 const Contact = ({contact}) => {
+
     const navigate = useNavigate()
     const seeCard = useNavigate()
     const refresh = () => {
@@ -16,9 +17,9 @@ const Contact = ({contact}) => {
                         <h1 style={{color:"#f99a5f"}}>حذف مخاطب</h1>
                         <p>ایا میخواهی مخاطب {contact.fullName}را پاک کنی ؟؟</p>
                         <button className="btn  btn-success" onClick={() => {
+                            refresh()
                             deleteCard(contact.id);
                              onClose();
-                             refresh()
                         }}>بله</button>
                         <button className="btn btn-danger" onClick={onClose}>خیر</button>
                     </div>

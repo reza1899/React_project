@@ -3,6 +3,7 @@ import './App.css'
 import axios from "axios";
 import contextApi from "./context/contextApi" 
 import {Routes,Route,Navigate} from "react-router-dom"
+import {ToastContainer, toast} from "react-toastify"
 import {
     Navbar,
     Contacts,
@@ -54,6 +55,7 @@ return(
     refresh,
   }}>
     <div className="App">
+        <ToastContainer rtl={true} position = {"top-right"} theme={"colored"}/>
     <Navbar />
       <Routes>
           <Route path="/" element={<Navigate to="/contacts"/>}/>

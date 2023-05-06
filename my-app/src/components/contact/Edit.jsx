@@ -4,7 +4,6 @@ import {getContact, getGroups,updateContact} from "../../services/services";
 import contextApi from "./../../context/contextApi"
 import Spinner from "../Spinner";
 import { useImmer } from "use-immer";
-
 const Edit = () => {
     const {loading , setLoading , refresh }  = useContext(contextApi)
     const Navigate =useNavigate()

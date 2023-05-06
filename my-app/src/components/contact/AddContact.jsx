@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import * as yup from "yup"
 import {useFormik} from "formik"
+import {toast} from "react-toastify";
 const AddContact = ({ loading, updatePage, setUpdatePage }) => {
     const [groups, setGroups] = useState([])
     // const [userInfo, setUserInfo] = useState({
@@ -39,12 +40,14 @@ const AddContact = ({ loading, updatePage, setUpdatePage }) => {
         getGroups()
 
     }, [])
+
     const postUser =  (userInfo) => {
         try {
             axios.post("http://localhost:9000/contacts", userInfo).then(response => {
                 console.log(response)
                 setUpdatePage(!updatePage)
                 Navigate("/contacts")
+                toast.success("کاربر با موفقیت اضافه شد")
             }
             )
         }

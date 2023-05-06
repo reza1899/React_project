@@ -9,4 +9,8 @@
     font-style: normal;
     font-display: swap;
 }
+.Toastify__toast-body {
+    font-family: "Vazir" , "tahoma" , "Ubuntu"; !important;
+}
+
 
