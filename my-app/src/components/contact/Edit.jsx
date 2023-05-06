@@ -3,6 +3,7 @@ import {useEffect, useState , useContext} from "react";
 import {getContact, getGroups,updateContact} from "../../services/services";
 import contextApi from "./../../context/contextApi"
 import Spinner from "../Spinner";
+import { useImmer } from "use-immer";
 
 const Edit = () => {
     const {loading , setLoading , refresh }  = useContext(contextApi)
@@ -10,7 +11,7 @@ const Edit = () => {
     const {contactId} = useParams()
     // const [groups , setGroups] =useState([])
     // const [contactInfo , setContactInfo] = useState()
-    const [state , setstate] = useState({
+    const [state , setstate] = useImmer({
         groups : [],
         contactInfo : {}
     })
@@ -20,10 +21,10 @@ const Edit = () => {
                 setLoading(true) 
                 const {data : data} = await getContact(contactId) 
                 const {data : data2} = await getGroups()
-                setstate({
-                    ...state,
-                    contactInfo: data,
-                    groups: data2
+
+                setstate(draft => {
+                    draft.groups = data2
+                    draft.contactInfo = data
                 })
                 // setGroups(data2)
                 // setContactInfo(data)

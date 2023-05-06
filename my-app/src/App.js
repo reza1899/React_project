@@ -24,6 +24,7 @@ function App() {
              await axios.get("http://localhost:9000/contacts").then( data => {
                       setContacts(data.data)
                       setNewContacts(data.data)
+
                   }
               )
               setLoading(false)
