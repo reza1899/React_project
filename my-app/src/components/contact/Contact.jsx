@@ -2,7 +2,7 @@ import {ROS,NARANJI} from "../../helpers/Colors"
 import {useNavigate} from "react-router-dom";
 import {deleteCard} from "../../services/services";
 import { confirmAlert } from "react-confirm-alert";
-const Contact = ({contact}) => { 
+const Contact = ({contact}) => {
     const navigate = useNavigate()
     const seeCard = useNavigate()
     const refresh = () => {
