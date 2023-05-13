@@ -22,7 +22,7 @@ let Funcyref = (props , ref) => {
 Funcyref = forwardRef(Funcyref)
 
 const Acordian = () => {
-  // useRef  
+  // useRef   
   const [name, setName] = useState("")
   const ref = useRef("")
   useEffect(() => {
