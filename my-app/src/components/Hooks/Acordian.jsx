@@ -116,13 +116,6 @@ const [users] = useFetch('https://jsonplaceholder.ir/users')
 console.log(users)
   //End Custom Hook
 
-  const postGroup = () =>
-  {
-    axios.post("http://localhost:9000/groups", {
-      id: 6,
-      name: "API"
-    }).then(r => console.log(r))
-   }
   return (
     <>
       <div className="accordion" id="accordionExample">
@@ -257,21 +250,6 @@ console.log(users)
                     : null
                }
              </div>
-            </div>
-          </div>
-        </div>
-        <div className="accordion-item">
-          <h2 className="accordion-header" id="headingNine">
-            <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
-              API
-            </button>
-          </h2>
-          <div id="collapseNine" className="accordion-collapse collapse" aria-labelledby="headingNine" data-bs-parent="#accordionExample">
-            <div className="accordion-body">
-              <div className="text-center">
-                <button className="btn btn-success" onClick={postGroup}>click to post group</button>
-              </div>
             </div>
           </div>
         </div>
