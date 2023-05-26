@@ -1,4 +1,5 @@
 {
+  "homepage": "https://reza1899.github.io/React_project",
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
@@ -22,6 +23,8 @@
     "yup": "^1.1.1"
   },
   "scripts": {
+    "predeploy": "react-scripts build",
+    "deploy": "gh-pages -d build",
     "start": "concurrently \"react-scripts start\" \"cd src && cd server && npm run backend\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -46,6 +49,7 @@
     ]
   },
   "devDependencies": {
-    "concurrently": "^8.0.1"
+    "concurrently": "^8.0.1",
+    "gh-pages": "^5.0.0"
   }
 }
