@@ -1,4 +1,4 @@
-To start using open teminal and insert "npm i" for installing node_modules.
+1- To start using open teminal and insert "npm i" for installing node_modules.
 
 
-step 2 is insert "npm start" to run application.
+2- step 2 is insert "npm start" to run application.
