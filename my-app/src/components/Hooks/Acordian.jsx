@@ -252,7 +252,7 @@ console.log(users)
              </div>
             </div>
           </div>
-        </div>
+        </div> 
       </div>
     </>
   )
