@@ -15,8 +15,11 @@ const Contacts = ({newContacts , loading}) => {
                           Username: https://github.com/reza1899
                          <br />
                          For Run : 
+                         <br/>
                          1- npm i
+                         <br/>
                          2- cd src , cd server , npm i
+                         <br/>
                          3- npm start
                         </h1>
                    </div>
