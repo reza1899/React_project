@@ -1,6 +1,7 @@
 import SearchContact from "./contact/SearchContact";
 import {ROS , ZARD} from "../helpers/Colors"
 import {useNavigate , useLocation} from "react-router-dom";
+import colorFull from "../hoc/colorFull";
 const Navbar = () => {
     const Navigate = useNavigate()
     const location = useLocation()
@@ -24,4 +25,4 @@ const Navbar = () => {
 
     )
 }
-export default Navbar
+export default colorFull(Navbar)
