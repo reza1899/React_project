@@ -6,7 +6,7 @@ export {default as AddContact} from "./contact/AddContact";
 export {default as Edit} from "./contact/Edit"
 export {default as ViewContact} from "./contact/ViewContact"
 export {default as Acordian} from "./Hooks/Acordian"
-export {default as Portal} from "./portals/portal"
+export {default as Seson12} from "./seson12"
 // export  {default as Books} from "./Books _project/Books"
 // export {default as Book} from "./Books _project/Book"
 // export {default as About} from "./Books _project/About"
