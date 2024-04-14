@@ -1,5 +1,6 @@
 import Portal from "./portals/portal"
 import { Suspense, lazy, useState } from "react";
+import SampleIcon from "./react_icons/sampleIcon";
 const LasyComponent = lazy(() => import("./lasyLoading/lasyComponent"))
 const Seson12 = () => {
     const [isShow, setIsShow] = useState(false)
@@ -15,6 +16,8 @@ const Seson12 = () => {
                     </Suspense>
                 )
             }
+            <hr className="text-white" />
+            <SampleIcon/>
             <hr className="text-white" />
             <Portal />
         </>
